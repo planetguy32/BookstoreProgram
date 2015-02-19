@@ -6,5 +6,7 @@ class ModuleReport :
 public:
 	ModuleReport();
 	~ModuleReport();
+
+	bool doInteraction();
 };
 

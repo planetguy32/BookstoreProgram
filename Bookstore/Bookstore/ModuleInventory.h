@@ -6,5 +6,7 @@ class ModuleInventory :
 public:
 	ModuleInventory();
 	~ModuleInventory();
+
+	bool doInteraction();
 };
 
