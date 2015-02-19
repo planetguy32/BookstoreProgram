@@ -31,3 +31,14 @@
 *.sln
 Bookstore/Bookstore/Debug/*
 Bookstore/Bookstore/Bookstore.*
+Bookstore/Bookstore.opensdf
+*.opensdf
+Bookstore/Bookstore.opensdf
+Bookstore/Bookstore/Bookstore.vcxproj
+Bookstore/Bookstore/Debug/Bookstore.log
+Bookstore/Bookstore/Debug/Bookstore.tlog/Bookstore.lastbuildstate
+Bookstore/Bookstore/Debug/Bookstore.tlog/CL.read.1.tlog
+Bookstore/Debug/Bookstore.pdb
+*.ilk
+Bookstore/Bookstore/Debug/vc120.idb
+*.tlog
