@@ -26,3 +26,8 @@
 *.exe
 *.out
 *.app
+
+*.sdf
+*.sln
+Bookstore/Bookstore/Debug/*
+Bookstore/Bookstore/Bookstore.*
