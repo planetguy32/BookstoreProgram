@@ -18,18 +18,18 @@ bool ModuleCheckout::doInteraction()
 {
 	bool moreItems=true;
 	double orderPrice=0;
-	cout << setprecision(2) << fixed;
+	std::cout << std::setprecision(2) << std::fixed;
 	while(moreItems)
 	{
-		string book;
-		cout << "Book title: ";
-		cin >> book;
+		std::string book;
+		std::cout << "Book title: ";
+		std::cin >> book;
 		if(book.length  == 0)
 		{
 			moreItems=false;
-			cout << "Subtotal: " << orderPrice;
-			cout << "Total: "
-			cout << "Thank you for your business." << endl;
+			std::cout << "Subtotal: " << orderPrice;
+			std::cout << "Total: "
+			std::cout << "Thank you for your business." << endl;
 		}
 		else
 		{
@@ -45,8 +45,8 @@ bool ModuleCheckout::doInteraction()
 				book->setQty(qty-1);
 			}
 			double price=book->getRetail();
-			cout << book->getTitle() << endl;
-			cout << "   $" << price << endl << endl;
+			std::cout << book->getTitle() << std::endl;
+			std::cout << "   $" << price << std::endl << std::endl;
 			orderPrice += price;
 		}
 	}
