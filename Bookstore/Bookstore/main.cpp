@@ -10,8 +10,9 @@ int main()
 {
 	Module *modules[3]; 
 
-	modules[0] = new ModuleCheckout;
-	modules[1] = new ModuleInventory;
+	Module *inventory=new ModuleInventory;
+	modules[0] = new ModuleCheckout(inventory);
+	modules[1] = inventory;
 	modules[2] = new ModuleReport;
 
 	bool go = true;
