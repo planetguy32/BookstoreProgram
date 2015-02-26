@@ -38,12 +38,9 @@ bool ModuleCheckout::doInteraction()
 			int qty=book->getQty();
 			if(qty <= 1)
 			{
-				//TODO handle book out of stock
+				//Book is now out of stock. What to do?
 			}
-			else
-			{
-				book->setQty(qty-1);
-			}
+			book->setQty(qty-1);
 			double price=book->getRetail();
 			std::cout << book->getTitle() << std::endl;
 			std::cout << "   $" << price << std::endl << std::endl;
