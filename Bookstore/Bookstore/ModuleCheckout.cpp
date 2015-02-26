@@ -17,34 +17,51 @@ ModuleCheckout::~ModuleCheckout()
 bool ModuleCheckout::doInteraction()
 {
 	bool moreItems=true;
+	bool moreCustomers=true;
 	double orderPrice=0;
 	std::cout << std::setprecision(2) << std::fixed;
-	while(moreItems)
+	while(moreCustomers)
 	{
-		std::string book;
-		std::cout << "Book title: ";
-		std::cin >> book;
-		if(book.length  == 0)
+		std::cout << "Ready..." << std::endl;
+		std::string ignored;
+		std::cin >> ignored;
+		if(cin == "logout")
 		{
 			moreItems=false;
-			std::cout << "Subtotal: " << orderPrice;
-			std::cout << "Total: "
-			std::cout << "Thank you for your business." << endl;
+			moreCustomers=false;
 		}
 		else
 		{
-			Book * book;
-			//TODO lookup from DB
-			int qty=book->getQty();
-			if(qty <= 1)
+			system("clear");
+			std::cout << "Welcome to the bookstore."  << std::endl;
+		}
+		while(moreItems)
+		{
+			std::string book;
+			std::cout << "Book title: ";
+			std::cin >> book;
+			if(book.length  == 0)
 			{
-				//Book is now out of stock. What to do?
+				moreItems=false;
+				std::cout << "Subtotal: " << orderPrice;
+				std::cout << "Total: "
+				std::cout << "Thank you for your business." << endl;
 			}
-			book->setQty(qty-1);
-			double price=book->getRetail();
-			std::cout << book->getTitle() << std::endl;
-			std::cout << "   $" << price << std::endl << std::endl;
-			orderPrice += price;
+			else
+ 			{
+				Book * book;
+				//TODO lookup from DB
+				int qty=book->getQty();
+				if(qty <= 1)
+				{
+					//Book is now out of stock. What to do?
+				}
+				book->setQty(qty-1);
+				double price=book->getRetail();
+				std::cout << book->getTitle() << std::endl;
+				std::cout << "   $" << price << std::endl << std::endl;
+				orderPrice += price;
+			}
 		}
 	}
 }
