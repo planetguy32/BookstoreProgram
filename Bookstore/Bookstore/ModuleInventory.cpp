@@ -65,17 +65,17 @@ string Book::getPub()
 	return publisher;
 }
 
-int setQty()
+int Book::setQty()
 {
 	return qty;
 }
 
-double setWhole()
+double Book::setWhole()
 {
 	return wholesale;
 }
 
-double setRetail()
+double Book::setRetail()
 {
 	return retail;
 }
