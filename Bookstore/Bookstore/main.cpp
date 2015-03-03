@@ -8,9 +8,9 @@ using namespace std;
 
 int main()
 {
-	Module *modules[3]; 
+	Module * modules[3]; 
 
-	Module *inventory=new ModuleInventory;
+	ModuleInventory *inventory=new ModuleInventory;
 	modules[0] = new ModuleCheckout(inventory);
 	modules[1] = inventory;
 	modules[2] = new ModuleReport;

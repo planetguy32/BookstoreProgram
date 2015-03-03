@@ -1,5 +1,6 @@
 #pragma once
 #include "Module.h"
+#include <string>
 
 /*
 ModuelInventory Class
@@ -87,7 +88,7 @@ ModuelInventory Class
 			-ofstream close file
 */
 
-
+class Book;
 
 class ModuleInventory :
 	public Module
@@ -95,22 +96,23 @@ class ModuleInventory :
 private:
 	int menuChoice;
 	int numInput;
-	string strInput;
+	std::string strInput;
 	double costInput;
 
 public:
 	ModuleInventory();
 	~ModuleInventory();
-	int getMenu();
+	bool doInteraction();
+	Book * getBook(int isbn);
 };
 
 class Book {
 private:
 	int ISBN;
-	string title;
-	string author;
-	string pulisher;
-	string date;
+	std::string title;
+	std::string author;
+	std::string publisher;
+	std::string date;
 	int qty;
 	double wholesale;
 	double retail;
@@ -118,17 +120,17 @@ public:
 	Book();
 	~Book();
 	void setISBN(int i);
-	void setTitle(string t);
-	void setAuthor(string a);
-	void setPub(string p);
+	void setTitle(std::string t);
+	void setAuthor(std::string a);
+	void setPub(std::string p);
 	void setQty(int q);
 	void setWhole(double w);
 	void setRetail(double r);
 
 	int getISBN();
-	string getTitle();
-	string getAuthor();
-	string getPub();
+	std::string getTitle();
+	std::string getAuthor();
+	std::string getPub();
 	int getQty();
 	double getWhole();
 	double getRetail();

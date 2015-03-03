@@ -5,8 +5,9 @@
 #include <iomanip>
 
 
-ModuleCheckout::ModuleCheckout()
+ModuleCheckout::ModuleCheckout(ModuleInventory *inv)
 {
+	inventory = inv;
 }
 
 
@@ -22,13 +23,14 @@ bool ModuleCheckout::doInteraction()
 	std::cout << std::setprecision(2) << std::fixed;
 	while(moreCustomers)
 	{
-		std::cout << "Ready..." << std::endl;
-		std::string ignored;
-		std::cin >> ignored;
-		if(cin == "logout")
+		std::cout << "Ready for business - enter employee username" << std::endl;
+		std::string employeeID;
+		std::cin >> employeeID;
+		if(employeeID == "logout" || employeeID == "quit")
 		{
 			moreItems=false;
 			moreCustomers=false;
+			return employeeID == "quit";
 		}
 		else
 		{
@@ -37,20 +39,19 @@ bool ModuleCheckout::doInteraction()
 		}
 		while(moreItems)
 		{
-			std::string book;
-			std::cout << "Book title: ";
-			std::cin >> book;
-			if(book.length  == 0)
+			int bookISBN;
+			std::cout << "ISBN: ";
+			if (!(std::cin >> bookISBN))
 			{
 				moreItems=false;
 				std::cout << "Subtotal: " << orderPrice;
-				std::cout << "Total: "
-				std::cout << "Thank you for your business." << endl;
+				std::cout << "Total: " << orderPrice * 1.10; //TODO variable tax rate?
+				std::cout << "Thank you for your business." << std::endl;
+				std::cout << "Your cashier was " << employeeID << std::endl;
 			}
 			else
  			{
-				Book * book;
-				//TODO lookup from DB
+				Book * book = inventory->getBook(bookISBN);
 				int qty=book->getQty();
 				if(qty <= 1)
 				{

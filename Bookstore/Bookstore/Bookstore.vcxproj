@@ -76,7 +76,19 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\src\main.cpp" />
+    <ClCompile Include="InvItem.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="ModuleCheckout.cpp" />
+    <ClCompile Include="ModuleInventory.cpp" />
+    <ClCompile Include="ModuleReport.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="InvItem.h" />
+    <ClInclude Include="Module.h" />
+    <ClInclude Include="ModuleCheckout.h" />
+    <ClInclude Include="ModuleInventory.h" />
+    <ClInclude Include="ModuleReport.h" />
+    <ClInclude Include="resource.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

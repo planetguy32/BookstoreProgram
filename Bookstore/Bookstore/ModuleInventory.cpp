@@ -10,22 +10,33 @@ ModuleInventory::~ModuleInventory()
 {
 }
 
+bool ModuleInventory::doInteraction()
+{
+	return false;
+}
+
+Book * ModuleInventory::getBook(int isbn)
+{
+	//TODO implement this
+	return reinterpret_cast<Book *>(0);
+}
+
 void Book::setISBN(int i)
 {
 	ISBN = i;
 }
 
-void Book::setTitle(string t)
+void Book::setTitle(std::string t)
 {
 	title = t;
 }
 
-void Book::setAuthor(string a)
+void Book::setAuthor(std::string a)
 {
 	author = a;
 }
 
-void Book::setPub(string p)
+void Book::setPub(std::string p)
 {
 	publisher = p;
 }
@@ -50,32 +61,32 @@ int Book::getISBN()
 	return ISBN;
 }
 
-string Book::getTitle()
+std::string Book::getTitle()
 {
 	return title;
 }
 
-string Book::getAuthor()
+std::string Book::getAuthor()
 {
 	return author;
 }
 
-string Book::getPub()
+std::string Book::getPub()
 {
 	return publisher;
 }
 
-int Book::setQty()
+int Book::getQty()
 {
 	return qty;
 }
 
-double Book::setWhole()
+double Book::getWhole()
 {
 	return wholesale;
 }
 
-double Book::setRetail()
+double Book::getRetail()
 {
 	return retail;
 }
