@@ -1,6 +1,7 @@
 #pragma once
 #include "Module.h"
 #include <string>
+#include <vector>
 
 /*
 ModuelInventory Class
@@ -94,11 +95,7 @@ class ModuleInventory :
 	public Module
 {
 private:
-	int menuChoice;
-	int numInput;
-	std::string strInput;
-	double costInput;
-
+	std::vector<Book> books;
 public:
 	ModuleInventory();
 	~ModuleInventory();
