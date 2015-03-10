@@ -96,6 +96,7 @@ class ModuleInventory :
 {
 private:
 	std::vector<Book> books;
+	std::string * split(const std::istream& in, char splitChar);
 public:
 	ModuleInventory();
 	~ModuleInventory();
@@ -123,6 +124,7 @@ public:
 	void setQty(int q);
 	void setWhole(double w);
 	void setRetail(double r);
+	void setDate(std::string date);
 
 	long long int getISBN();
 	std::string getTitle();

@@ -4,30 +4,49 @@
 
 ModuleInventory::ModuleInventory()
 {
-	/*
 	std::ifstream in("booklist.txt", std::ifstream::in);
-	char *line = new char[4096];
 	while (in.good())
 	{	
-		Book book;
-		int indexIntoLine = 0;
-		in.getline(line, 4096);
-		std::string name="";
-		while (line[indexIntoLine] != '~')
-		{
-			name = name + line[indexIntoLine];
-		}
+		Book * book = new Book;
+		std::string * subParts=split(in, '~');
+		book->setISBN(stoll(subParts[0]));
+		book->setTitle(subParts[1]);
+		book->setAuthor(subParts[2]);
+		book->setPub(subParts[3]);
+		book->setDate(subParts[4]);
+
+		books.push_back(*book);
+		delete[]  subParts;
 	}
-	delete line;
-	*/
 }
 
-/*
-std::string [] split(const std::istream& in, char splitChar)
+std::string * ModuleInventory::split(const std::istream& in, char splitChar)
 {
-	
+	std::string * readLines = new std::string [8];
+	char readSpot[2048];
+	in.getline(readSpot, 2048);
+	int indexIntoLine = 0;
+	int indexIntoReadLines = 0;
+	std::string inProgress;
+	//exits on \0 or finished readSpot or found all 8 parts
+	while (readSpot[indexIntoLine]
+		&& indexIntoLine < 2048
+		&& indexIntoReadLines < 8)
+	{
+		if (readSpot[indexIntoLine] == splitChar)
+		{
+			readLines[indexIntoReadLines] = inProgress;
+			indexIntoReadLines++;
+		}
+		else
+		{
+			inProgress+=readSpot[indexIntoLine];
+		}
+		indexIntoLine++;
+	}
+	return readLines;
 }
-*/
+
 
 ModuleInventory::~ModuleInventory()
 {
@@ -87,6 +106,11 @@ void Book::setWhole(double w)
 void Book::setRetail(double r)
 {
 	retail = r;
+}
+
+void Book::setDate(std::string d)
+{
+	date = d;
 }
 
 long long int Book::getISBN()
