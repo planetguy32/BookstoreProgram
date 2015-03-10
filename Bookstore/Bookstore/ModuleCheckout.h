@@ -1,4 +1,5 @@
-#pragma once
+#ifndef module_checkout_include_guard_kjqiuhvqiwugasdkncqiwufbhqeviub
+#define module_checkout_include_guard_kjqiuhvqiwugasdkncqiwufbhqeviub
 #include "Module.h"
 #include "ModuleInventory.h"
 
@@ -13,3 +14,4 @@ public:
 	bool doInteraction();
 };
 
+#endif

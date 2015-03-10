@@ -1,10 +1,33 @@
 #include "ModuleInventory.h"
+#include <fstream>
 
 
 ModuleInventory::ModuleInventory()
 {
+	/*
+	std::ifstream in("booklist.txt", std::ifstream::in);
+	char *line = new char[4096];
+	while (in.good())
+	{	
+		Book book;
+		int indexIntoLine = 0;
+		in.getline(line, 4096);
+		std::string name="";
+		while (line[indexIntoLine] != '~')
+		{
+			name = name + line[indexIntoLine];
+		}
+	}
+	delete line;
+	*/
 }
 
+/*
+std::string [] split(const std::istream& in, char splitChar)
+{
+	
+}
+*/
 
 ModuleInventory::~ModuleInventory()
 {
@@ -19,6 +42,16 @@ Book * ModuleInventory::getBook(int isbn)
 {
 	//TODO implement this
 	return reinterpret_cast<Book *>(0);
+}
+
+Book::Book()
+{
+
+}
+
+Book::~Book()
+{
+
 }
 
 void Book::setISBN(int i)
@@ -56,7 +89,7 @@ void Book::setRetail(double r)
 	retail = r;
 }
 
-int Book::getISBN()
+long long int Book::getISBN()
 {
 	return ISBN;
 }

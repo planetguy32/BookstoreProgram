@@ -105,7 +105,7 @@ public:
 
 class Book {
 private:
-	int ISBN;
+	long long int ISBN;
 	std::string title;
 	std::string author;
 	std::string publisher;
@@ -124,7 +124,7 @@ public:
 	void setWhole(double w);
 	void setRetail(double r);
 
-	int getISBN();
+	long long int getISBN();
 	std::string getTitle();
 	std::string getAuthor();
 	std::string getPub();
