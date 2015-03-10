@@ -1,5 +1,6 @@
 #include "ModuleCheckout.h"
 #include "ModuleInventory.h"
+#include "SystemPrograms.h"
 
 #include <iostream>
 #include <iomanip>
@@ -28,13 +29,11 @@ bool ModuleCheckout::doInteraction()
 		std::cin >> employeeID;
 		if(employeeID == "logout" || employeeID == "quit")
 		{
-			moreItems=false;
-			moreCustomers=false;
-			return employeeID == "quit";
+			return employeeID != "quit";
 		}
 		else
 		{
-			system("clear");
+			system_clear();
 			std::cout << "Welcome to the bookstore."  << std::endl;
 		}
 		while(moreItems)
