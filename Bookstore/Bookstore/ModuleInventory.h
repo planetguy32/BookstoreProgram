@@ -34,11 +34,14 @@ class ModuleInventory :
 private:
 	std::vector<Book *> books;
 	std::string * split(std::istream& in, char splitChar);
-	Book * findBook(long long int isbn, int start, int end);
+	template<class T>
+	Book * findBook(T, T(Book::* f)(), int start, int end);
 	Book * parseBook(std::string * inputArrayOf8);
 public:
 	ModuleInventory();
 	~ModuleInventory();
 	bool doInteraction();
+	template<class T>
+	Book * getBook(T isbn, T(Book::* f)() );
 	Book * getBook(long long int isbn);
 };

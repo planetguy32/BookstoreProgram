@@ -24,7 +24,7 @@ bool ModuleCheckout::doInteraction()
 	std::cout << std::setprecision(2) << std::fixed;
 	while(moreCustomers)
 	{
-		std::cout << "Ready for business - enter employee username" << std::endl;
+		std::cout << "Ready for business - enter employee username (or \"logout\" or \"quit\")" << std::endl;
 		std::string employeeID;
 		std::cin >> employeeID;
 		if(employeeID == "logout" || employeeID == "quit")
@@ -71,4 +71,5 @@ bool ModuleCheckout::doInteraction()
 			}
 		}
 	}
+	return 0;
 }

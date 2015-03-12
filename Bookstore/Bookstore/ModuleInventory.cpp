@@ -47,6 +47,11 @@ else if don't find it
 #include "Module.h" 
 #include "ModuleInventory.h"
 
+bool compare(Book* b1, Book* b2)
+{
+	return *b1 < *b2;
+}
+
 ModuleInventory::ModuleInventory()
 {
 	bool go = true;
@@ -69,7 +74,8 @@ ModuleInventory::ModuleInventory()
 			valid = false;
 		}
 	}
-	std::sort(books.begin(), books.end());
+
+	std::sort(books.begin(), books.end(), compare);
 }
 
 Book * ModuleInventory::parseBook(std::string * subParts)
@@ -181,7 +187,7 @@ bool ModuleInventory::doInteraction()
 		else
 		{
 
-//			Book * book = inventory->getBook(bookISBN);
+			//			Book * book = inventory->getBook(bookISBN);
 			Book * book = getBook(bookISBN);
 			if (book != 0)
 			{
@@ -240,19 +246,26 @@ bool ModuleInventory::doInteraction()
 
 Book * ModuleInventory::getBook(long long int isbn)
 {
-	return findBook(isbn, 0, books.size());
+	return findBook(isbn, &Book::getISBN);
 }
 
-Book * ModuleInventory::findBook(long long int isbn, int start, int end)
+template<class T>
+Book * ModuleInventory::getBook(T isbn, T (Book::* f)())
+{
+	return findBook(isbn, f, 0, books.size());
+}
+
+template<class T>
+Book * ModuleInventory::findBook(T isbn, T (Book::* f)(), int start, int end)
 {
 	int midpt = start+(end - start) / 2;
-	long long int otherISBN = books[midpt]->getISBN();
-	if (end == start && otherISBN != isbn)
-		return 0;
-	else if (isbn == otherISBN)
+	T otherISBN = books[midpt]->*f();
+	if (isbn == otherISBN)
 		return books[midpt];
-	else if (isbn > otherISBN)
-		return findBook(isbn, midpt, end);
+	if (end <= start && otherISBN != isbn)
+		return 0;
+	if (isbn > otherISBN)
+		return findBook(isbn, midpt+1, end);
 	else
-		return findBook(isbn, start, midpt);
+		return findBook(isbn, start, midpt-1);
 }
