@@ -1,5 +1,6 @@
 #pragma once
 #include "Module.h"
+#include "Book.h"
 #include <string>
 #include <vector>
 
@@ -89,51 +90,16 @@ ModuelInventory Class
 			-ofstream close file
 */
 
-class Book;
-
 class ModuleInventory :
 	public Module
 {
 private:
-	std::vector<Book> books;
-	std::string * split(const std::istream& in, char splitChar);
+	std::vector<Book *> books;
+	std::string * split(std::istream& in, char splitChar);
+	Book * findBook(long long int isbn, int start, int end);
 public:
 	ModuleInventory();
 	~ModuleInventory();
 	bool doInteraction();
-	Book * getBook(int isbn);
+	Book * getBook(long long int isbn);
 };
-
-class Book {
-private:
-	long long int ISBN;
-	std::string title;
-	std::string author;
-	std::string publisher;
-	std::string date;
-	int qty;
-	double wholesale;
-	double retail;
-public:
-	Book();
-	~Book();
-	void setISBN(int i);
-	void setTitle(std::string t);
-	void setAuthor(std::string a);
-	void setPub(std::string p);
-	void setQty(int q);
-	void setWhole(double w);
-	void setRetail(double r);
-	void setDate(std::string date);
-
-	long long int getISBN();
-	std::string getTitle();
-	std::string getAuthor();
-	std::string getPub();
-	int getQty();
-	double getWhole();
-	double getRetail();
-
-
-};
-
