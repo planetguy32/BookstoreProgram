@@ -30,6 +30,9 @@
     <ClCompile Include="ModuleReport.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Book.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="InvItem.h">
@@ -48,6 +51,12 @@
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="resource.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SystemPrograms.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Book.h">
       <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>

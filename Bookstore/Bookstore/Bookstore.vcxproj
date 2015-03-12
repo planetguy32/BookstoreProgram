@@ -76,6 +76,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Book.cpp" />
     <ClCompile Include="InvItem.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="ModuleCheckout.cpp" />
@@ -83,12 +84,14 @@
     <ClCompile Include="ModuleReport.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Book.h" />
     <ClInclude Include="InvItem.h" />
     <ClInclude Include="Module.h" />
     <ClInclude Include="ModuleCheckout.h" />
     <ClInclude Include="ModuleInventory.h" />
     <ClInclude Include="ModuleReport.h" />
     <ClInclude Include="resource.h" />
+    <ClInclude Include="SystemPrograms.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
