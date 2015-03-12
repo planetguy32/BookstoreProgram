@@ -35,6 +35,7 @@ private:
 	std::vector<Book *> books;
 	std::string * split(std::istream& in, char splitChar);
 	Book * findBook(long long int isbn, int start, int end);
+	Book * parseBook(std::string * inputArrayOf8);
 public:
 	ModuleInventory();
 	~ModuleInventory();

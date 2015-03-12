@@ -55,18 +55,10 @@ ModuleInventory::ModuleInventory()
 	bool valid = true;
 	while (in.good() && valid)
 	{	
-		Book * book=new Book;
 		std::string * subParts=split(in, '~');
 		if (subParts)
 		{
-			book->setISBN(stoll(subParts[0]));
-			book->setTitle(subParts[1]);
-			book->setAuthor(subParts[2]);
-			book->setPub(subParts[3]);
-			book->setDate(subParts[4]);
-			book->setQty(stoi(subParts[5]));
-			book->setWhole(stod(subParts[6]));
-			book->setRetail(stod(subParts[7]));
+			Book * book = parseBook(subParts);
 
 			books.push_back(book);
 			
@@ -78,6 +70,25 @@ ModuleInventory::ModuleInventory()
 		}
 	}
 	std::sort(books.begin(), books.end());
+}
+
+Book * ModuleInventory::parseBook(std::string * subParts)
+{
+	Book * book=0;
+	if (subParts)
+	{
+		book = new Book;
+
+		book->setISBN(stoll(subParts[0]));
+		book->setTitle(subParts[1]);
+		book->setAuthor(subParts[2]);
+		book->setPub(subParts[3]);
+		book->setDate(subParts[4]);
+		book->setQty(stoi(subParts[5]));
+		book->setWhole(stod(subParts[6]));
+		book->setRetail(stod(subParts[7]));
+	}
+	return book;
 }
 
 std::string * ModuleInventory::split(std::istream& instream, char splitChar)
