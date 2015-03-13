@@ -156,7 +156,6 @@ ModuleInventory::~ModuleInventory()
 
 bool ModuleInventory::doInteraction()
 {
-	std::string * NewBook = new std::string[8];
 	bool moreItems = true;
 	char AddBook;
 
@@ -209,6 +208,7 @@ bool ModuleInventory::doInteraction()
 
 				if (AddBook == 'y' || AddBook == 'Y')
 				{
+					std::string * NewBook = new std::string[8];
 					Book * book = new Book;
 					NewBook[0] = bookISBN;
 					std::cout << std::endl << " Title : ";
@@ -235,7 +235,9 @@ bool ModuleInventory::doInteraction()
 					book->setWhole(stoi(NewBook[6]));
 					book->setRetail(stoi(NewBook[7]));
 
+					books.push_back(book);
 
+					std::sort(books.begin(), books.end(), compare);
 				}
 
 			}
@@ -246,7 +248,7 @@ bool ModuleInventory::doInteraction()
 
 Book * ModuleInventory::getBook(long long int isbn)
 {
-	return findBook(isbn, &Book::getISBN);
+	return getBook(isbn, &Book::getISBN);
 }
 
 template<class T>
@@ -258,14 +260,20 @@ Book * ModuleInventory::getBook(T isbn, T (Book::* f)())
 template<class T>
 Book * ModuleInventory::findBook(T isbn, T (Book::* f)(), int start, int end)
 {
-	int midpt = start+(end - start) / 2;
-	T otherISBN = books[midpt]->*f();
+	return books[getBookIndex(isbn, f, start, end)];
+}
+
+template<class T>
+int ModuleInventory::getBookIndex(T isbn, T(Book::* f)(), int start, int end)
+{
+	int midpt = start + (end - start) / 2;
+	T otherISBN = (books[midpt]->*f)();
 	if (isbn == otherISBN)
-		return books[midpt];
-	if (end <= start && otherISBN != isbn)
-		return 0;
+		return midpt;
+	if (end <= start)
+		return -1;
 	if (isbn > otherISBN)
-		return findBook(isbn, midpt+1, end);
+		return getBookIndex(isbn, f, midpt + 1, end);
 	else
-		return findBook(isbn, start, midpt-1);
+		return getBookIndex(isbn, f, start, midpt - 1);
 }
