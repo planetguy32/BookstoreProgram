@@ -260,7 +260,12 @@ Book * ModuleInventory::getBook(T isbn, T (Book::* f)())
 template<class T>
 Book * ModuleInventory::findBook(T isbn, T (Book::* f)(), int start, int end)
 {
-	return books[getBookIndex(isbn, f, start, end)];
+	int bookIdx=getBookIndex(isbn, f, start, end);
+
+	if (bookIdx == -1)
+		return reinterpret_cast<Book *>(0);
+	else
+		return books[bookIdx];
 }
 
 template<class T>

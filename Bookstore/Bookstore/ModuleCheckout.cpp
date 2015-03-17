@@ -18,46 +18,36 @@ ModuleCheckout::~ModuleCheckout()
 
 bool ModuleCheckout::doInteraction()
 {
-	bool moreItems=true;
-	bool moreCustomers=true;
-	double orderPrice=0;
 	std::cout << std::setprecision(2) << std::fixed;
-	while(moreCustomers)
+	while(1)
 	{
 		std::cout << "Ready for business - enter employee username (or \"logout\" or \"quit\")" << std::endl;
 		std::string employeeID;
-		std::cin >> employeeID;
-		if(employeeID == "logout" || employeeID == "quit")
+		std::cin.ignore();
+		std::getline(std::cin,employeeID);
+		if(strcmp( employeeID.c_str(), "logout") == 0)
 		{
-			return employeeID != "quit";
+			return true;
 		}
 		else
 		{
 			system_clear();
 			std::cout << "Welcome to the bookstore."  << std::endl;
 		}
-		while(moreItems)
+		bool moreItems = true;
+		double orderPrice = 0;
+		while (moreItems)
 		{
+			std::string strBookISBN;
 			long long int bookISBN;
 			std::cout << "ISBN: ";
-			if (!(std::cin >> bookISBN))
-			{
-				moreItems=false;
-				std::cout << "Subtotal: " << orderPrice <<std::endl;
-				//std::cout << "Total: " << orderPrice * 1.10 <<endl; 
-				std::cout << "Thank you for your business." << std::endl;
-				std::cout << "Your cashier was " << employeeID << std::endl;
-			}
-			else
- 			{
+			std::getline(std::cin, strBookISBN);
+			try{
+				bookISBN = std::stoll(strBookISBN);
 				Book * book = inventory->getBook(bookISBN);
 				if (book != 0)
 				{
 					int qty = book->getQty();
-					if (qty <= 1)
-					{
-						//Book is now out of stock. What to do?
-					}
 					book->setQty(qty - 1);
 					double price = book->getRetail();
 					std::cout << book->getTitle() << std::endl;
@@ -69,7 +59,17 @@ bool ModuleCheckout::doInteraction()
 					std::cout << "Book not recognized!" << std::endl;
 				}
 			}
+			catch (std::invalid_argument)
+			{
+				moreItems = false;
+				std::cout << "Total price: " << orderPrice << std::endl;
+				//std::cout << "Total: " << orderPrice * 1.10 <<endl; 
+				std::cout << "Thank you for your business." << std::endl;
+				std::cout << "Your cashier was " << employeeID << std::endl;
+			}
 		}
+
+
 	}
 	return 0;
 }

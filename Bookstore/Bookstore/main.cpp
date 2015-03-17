@@ -23,13 +23,17 @@ int main()
 		cout << "    1. Checkout" << endl;
 		cout << "    2. Inventory" << endl;
 		cout << "    3. Reports" << endl;
+		cout << "    4. Exit" << endl;
 		cout << endl;
 		cout << ":";
 		int choice=-1;
-		while (!(cin >> choice) || choice >= 3 || choice < 0){
+		while (!(cin >> choice) || choice >= 4 || choice < 0){
 			cout << "Invalid choice - only 1-3 are allowed" << endl;
 		}
-		go = modules[choice-1]->doInteraction();
+		if (choice == 4)
+			go = false;
+		else
+			go = modules[choice-1]->doInteraction();
 	}
 	cout << "Exiting" << endl;
 	delete modules[0];
