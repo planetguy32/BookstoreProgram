@@ -19,7 +19,7 @@ void ModuleReport::listInv()
 {
 	for (int i = 0; i < inventory->books.size(); i++)
 	{
-		inventory->books[i]->print();
+		//inventory->books[i]->print();
 		std::cout << endl;
 	}
 }
@@ -74,8 +74,11 @@ void ModuleReport::listByQty()
 		}
 		//DISPLAY THE VECTOR
 		for (int i = 0; i < inventory->books.size(); i++)
-			std::cout << inventory->books[i] << endl;
-		std::cout << std::endl;
+		{
+			std::cout << "Book Title: " << inventory->books[i]->getTitle() << endl;
+			std::cout << "Quantity on Hand: " << inventory->books[i]->getQty() << endl;
+			std::cout << std::endl;
+		}
 	}
 }
 
@@ -90,7 +93,7 @@ void ModuleReport::listByCost()
 		for (int i = wall + 1; i < inventory->books.size(); i++)
 		{
 			//SWAP
-			if (inventory->books[i] > inventory->books[wall])
+			if (inventory->books[i]->getWhole() > inventory->books[wall]->getWhole())
 			{
 				temp = inventory->books[i];
 				inventory->books[i] = inventory->books[wall];
@@ -100,7 +103,11 @@ void ModuleReport::listByCost()
 	}
 	//DISPLAY THE VECTOR
 	for (int i = 0; i < inventory->books.size(); i++)
-		std::cout << inventory->books[i] << endl;
+	{
+		std::cout << "Book Title: " << inventory->books[i]->getTitle() << endl;
+		std::cout << "Wholesale Value: " << inventory->books[i]->getWhole() << endl;
+		std::cout << std::endl;
+	}
 	std::cout << std::endl;
 }
 
@@ -115,7 +122,7 @@ void ModuleReport::listByAge()
 		{
 			for (int i = wall + 1; i < inventory->books.size(); i++)
 			{
-				if (inventory->books[i]->getDate() > inventory->books[wall]->getDate())
+				if (inventory->books[i]->getDate() < inventory->books[wall]->getDate())
 				{
 					//SWAP
 					temp = inventory->books[i];
@@ -126,8 +133,11 @@ void ModuleReport::listByAge()
 		}
 		//DISPLAY THE VECTOR
 		for (int i = 0; i < inventory->books.size(); i++)
-			std::cout << inventory->books[i] << endl;
-		std::cout << std::endl;
+		{
+			std::cout << "Book Title: " << inventory->books[i]->getTitle() << endl;
+			std::cout << "Date Added to Shelf: " << inventory->books[i]->getDate() << endl;
+			std::cout << std::endl;
+		}
 	}
 }
 
@@ -150,18 +160,22 @@ bool ModuleReport::doInteraction() // main calls doInteraction which calls the M
 	switch (menuChoice)
 	{
 	case 1:
+		listInv();
 		break;
 	case 2:
 		wholeValue();
 		break;
 	case 3:
+		retailValue();
 		break;
 	case 4:
+		listByQty();
 		break;
 	case 5:
 		listByCost();
 		break;
 	case 6:
+		listByAge();
 		break;
 	case 7:
 		cout << endl << "\"See you later.\"";
