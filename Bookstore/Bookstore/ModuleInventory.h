@@ -32,13 +32,13 @@ class ModuleInventory :
 	public Module
 {
 private:
-	std::vector<Book *> books;
 	std::string * split(std::istream& in, char splitChar);
 	
 	template<class T>
 	Book * findBook(T, T(Book::* f)(), int start, int end);
 	Book * parseBook(std::string * inputArrayOf8);
 public:
+	std::vector<Book *> books;
 	ModuleInventory();
 	~ModuleInventory();
 	bool doInteraction();

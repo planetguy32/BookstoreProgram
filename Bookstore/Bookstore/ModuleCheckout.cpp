@@ -71,5 +71,7 @@ bool ModuleCheckout::doInteraction()
 
 
 	}
+	int i = 0;
+	std::cout << std::setw(6) << inventory->books[i]->getQty() << inventory->books[i]->getTitle();
 	return 0;
 }

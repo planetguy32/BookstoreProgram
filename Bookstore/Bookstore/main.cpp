@@ -27,13 +27,13 @@ int main()
 		cout << endl;
 		cout << ":";
 		int choice=-1;
-		while (!(cin >> choice) || choice >= 4 || choice < 0){
-			cout << "Invalid choice - only 1-3 are allowed" << endl;
+		while (!(cin >> choice) || choice > 4 || choice < 0){
+			cout << "Invalid choice - only 1-4 are allowed" << endl;
 		}
 		if (choice == 4)
 			go = false;
 		else
-			go = modules[choice-1]->doInteraction();
+			modules[choice-1]->doInteraction();
 	}
 	cout << "Exiting" << endl;
 	delete modules[0];
