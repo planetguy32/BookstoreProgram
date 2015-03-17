@@ -1,6 +1,3 @@
-//HEADER FILE:
-
-
 #pragma once
 #include "Module.h"
 #include "ModuleInventory.h"
@@ -9,8 +6,11 @@
 class ModuleReport :
 	public Module
 {
-public:
+private:
 	ModuleInventory *inventory;
+
+public:
+	
 	ModuleReport(ModuleInventory *inventory);
 	~ModuleReport();
 
@@ -25,4 +25,3 @@ public:
 
 
 };
-

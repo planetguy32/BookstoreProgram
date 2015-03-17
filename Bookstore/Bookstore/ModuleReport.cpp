@@ -17,7 +17,11 @@ ModuleReport::~ModuleReport()
 //*****************LIST ALL INVENTORY BOOKS*****************
 void ModuleReport::listInv()
 {
-
+	for (int i = 0; i < inventory->books.size(); i++)
+	{
+		inventory->books[i]->print();
+		std::cout << endl;
+	}
 }
 
 //*****************LIST WHOLESALE VALUES*****************
@@ -27,7 +31,7 @@ void ModuleReport::wholeValue()
 
 	for (int i = 0; i < inventory->books.size(); i++)
 	{
-		std::cout << inventory->books[i] << std::endl;
+		std::cout << inventory->books[i]->getWhole() << std::endl;
 		sum += inventory->books[i]->getWhole();
 	}
 
@@ -41,7 +45,7 @@ void ModuleReport::retailValue()
 
 	for (int i = 0; i < inventory->books.size(); i++)
 	{
-		std::cout << inventory->books[i] << std::endl;
+		std::cout << inventory->books[i]->getRetail() << std::endl;
 		sum += inventory->books[i]->getRetail();
 	}
 
@@ -76,7 +80,7 @@ void ModuleReport::listByQty()
 }
 
 //*****************SORT BY WHOLESALE COST*****************
-void ModuleReport::listByCost() 
+void ModuleReport::listByCost()
 {
 	Book * temp;
 
@@ -111,7 +115,7 @@ void ModuleReport::listByAge()
 		{
 			for (int i = wall + 1; i < inventory->books.size(); i++)
 			{
-				if (inventory->books[i] > inventory->books[wall])
+				if (inventory->books[i]->getDate() > inventory->books[wall]->getDate())
 				{
 					//SWAP
 					temp = inventory->books[i];
@@ -141,7 +145,7 @@ bool ModuleReport::doInteraction() // main calls doInteraction which calls the M
 		<< "1. Inventory List\n2.Inventory Wholesale Value\n3.Inventory Retail Value\n4.List All Books by Quantity\n"
 		<< "5.List All Books by Wholesale Cost\n6.List All Books by Age inInventory\n7.Exit\n"
 		<< "ENTER CHOICE : ";
-		std::cin >> menuChoice;
+	std::cin >> menuChoice;
 
 	switch (menuChoice)
 	{
