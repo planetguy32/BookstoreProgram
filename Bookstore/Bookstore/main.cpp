@@ -26,9 +26,28 @@ int main()
 		cout << "    4. Exit" << endl;
 		cout << endl;
 		cout << ":";
+		string strChoice;
 		int choice=-1;
-		while (!(cin >> choice) || choice > 4 || choice < 0){
+		getline(cin, strChoice);
+		try{
+			choice = stoi(strChoice);
+		}
+		catch (std::invalid_argument)
+		{
+			choice = -1;
+		}
+		
+		while ( choice > 4 || choice < 0){
+
 			cout << "Invalid choice - only 1-4 are allowed" << endl;
+			getline(cin, strChoice);
+			try{
+				choice = stoi(strChoice);
+			}
+			catch (std::invalid_argument)
+			{
+				choice = -1;
+			}
 		}
 		if (choice == 4)
 			go = false;

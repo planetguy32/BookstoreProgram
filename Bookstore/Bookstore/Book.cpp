@@ -1,4 +1,5 @@
 #include "Book.h"
+#include <iostream>
 
 Book::Book()
 {
@@ -88,6 +89,20 @@ double Book::getRetail()
 std::string Book::getDate()
 {
 	return date;
+}
+
+void Book::print()
+{
+	std::cout << std::endl;
+	std::cout << " ISBN : " << getISBN() << std::endl;
+	std::cout << " Title : " << getTitle() << std::endl;
+	std::cout << " Author : " << getAuthor() << std::endl;
+	std::cout << " Publisher : " << getPub() << std::endl;
+	std::cout << " Date Added to Inventory : " << getDate() << std::endl;
+	std::cout << " Quantity On Hand : " << getQty() << std::endl;
+	std::cout << " Wholesale Cost : $" << getWhole() << std::endl;
+	std::cout << " Retail Price : $" << getRetail() << std::endl;
+	std::cout << std::endl;
 }
 
 bool operator> (Book &b1, Book &b2)

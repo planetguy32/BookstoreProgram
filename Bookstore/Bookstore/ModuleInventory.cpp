@@ -174,7 +174,8 @@ bool ModuleInventory::doInteraction()
 	{
 		std::cout << "Invalid choice - only 1-5 are allowed" << std::endl;
 	}
-
+	if (choice == 5)
+		return 0;
 	while (moreItems)
 	{
 		long long int bookISBN;

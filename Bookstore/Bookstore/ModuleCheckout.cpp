@@ -62,8 +62,8 @@ bool ModuleCheckout::doInteraction()
 			catch (std::invalid_argument)
 			{
 				moreItems = false;
-				std::cout << "Total price: " << orderPrice << std::endl;
-				//std::cout << "Total: " << orderPrice * 1.10 <<endl; 
+				std::cout << "Subtotal: " << orderPrice << std::endl;
+				std::cout << "Total: " << orderPrice * 1.10 <<std::endl; 
 				std::cout << "Thank you for your business." << std::endl;
 				std::cout << "Your cashier was " << employeeID << std::endl;
 			}

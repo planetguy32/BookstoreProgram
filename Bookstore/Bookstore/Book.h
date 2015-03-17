@@ -35,6 +35,8 @@ public:
 	double getRetail();
 	std::string getDate();
 
+	void print();
+
 	friend bool operator> (Book &cP1, Book &cP2);
 	friend bool operator< (Book &cP1, Book &cP2);
 	friend bool operator>= (Book &cP1, Book &cP2);
