@@ -3,6 +3,7 @@
 
 #pragma once
 #include "Module.h"
+#include "ModuleInventory.h"
 #include <vector>
 
 class ModuleReport :

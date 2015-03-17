@@ -3,7 +3,7 @@
 
 void system_clear()
 {
-	system("clear");
+	system("CLS");
 }
 
 #endif

@@ -13,7 +13,7 @@ int main()
 	ModuleInventory *inventory=new ModuleInventory;
 	modules[0] = new ModuleCheckout(inventory);
 	modules[1] = inventory;
-	modules[2] = new ModuleReport;
+	modules[2] = new ModuleReport(inventory);
 
 	bool go = true;
 

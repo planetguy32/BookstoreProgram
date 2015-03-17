@@ -28,7 +28,7 @@ void ModuleReport::wholeValue()
 	for (int i = 0; i < inventory->books.size(); i++)
 	{
 		std::cout << inventory->books[i] << std::endl;
-		sum += inventory->books[i];
+		sum += inventory->books[i]->getWhole();
 	}
 
 	std::cout << std::endl << "TOTAL WHOLESALE VALUE: " << sum << std::endl << std::endl;
@@ -42,7 +42,7 @@ void ModuleReport::retailValue()
 	for (int i = 0; i < inventory->books.size(); i++)
 	{
 		std::cout << inventory->books[i] << std::endl;
-		sum += inventory->books[i];
+		sum += inventory->books[i]->getRetail();
 	}
 
 	std::cout << std::endl << "TOTAL RETAIL VALUE: " << sum << std::endl << std::endl;
@@ -52,7 +52,7 @@ void ModuleReport::retailValue()
 void ModuleReport::listByQty()
 {
 	{
-		double temp;
+		Book * temp;
 
 		//SORT THE VECTOR
 		for (int wall = 0; wall < inventory->books.size() - 1; wall++)
@@ -78,7 +78,7 @@ void ModuleReport::listByQty()
 //*****************SORT BY WHOLESALE COST*****************
 void ModuleReport::listByCost() 
 {
-	double temp;
+	Book * temp;
 
 	//SORT THE VECTOR
 	for (int wall = 0; wall < inventory->books.size() - 1; wall++)
@@ -104,7 +104,7 @@ void ModuleReport::listByCost()
 void ModuleReport::listByAge()
 {
 	{
-		double temp;
+		Book * temp;
 
 		//SORT THE VECTOR
 		for (int wall = 0; wall < inventory->books.size() - 1; wall++)
