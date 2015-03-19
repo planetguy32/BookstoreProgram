@@ -18,6 +18,7 @@ ModuleCheckout::~ModuleCheckout()
 
 bool ModuleCheckout::doInteraction()
 {
+	std::cout << "===Checkout Module===" << std::endl;
 	std::cout << std::setprecision(2) << std::fixed;
 	while(1)
 	{

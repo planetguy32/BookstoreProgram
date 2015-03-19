@@ -16,13 +16,19 @@ public:
 
 	bool doInteraction(); 
 
-	void listInv();
-	void wholeValue();
-	void retailValue();
-	void listByQty();
-	void listByCost();
-	void listByAge();
+	void dumpBookList();
+		
+	template<class T>
+	void dumpBookList(T(Book::* f)());
 
+	template<class T>
+	void listBy(T(Book::* f)());
+
+	template<class T>
+	void sortBy(T(Book::* f)());
+
+	template<class T>
+	void accumulate(T(Book::* f)());
 
 };
 

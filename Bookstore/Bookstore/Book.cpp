@@ -1,5 +1,6 @@
 #include "Book.h"
 #include <iostream>
+#include <iomanip>
 
 Book::Book()
 {
@@ -133,4 +134,10 @@ bool operator== (Book &b1, Book &b2)
 bool operator!= (Book &b1, Book &b2)
 {
 	return b1.ISBN != b2.ISBN;
+}
+
+std::ostream& operator<< (std::ostream& o, Book &b)
+{
+	o << std::setw(55) << b.getTitle() << " (" << b.getISBN() << ")";
+	return o;
 }

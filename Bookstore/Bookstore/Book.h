@@ -2,7 +2,7 @@
 #define BOOK_HEADER_ASDFAEFBWRTxvcuqrgkqgBQ_Ewfbwethbw
 
 #include <string>
-
+#include <iostream>
 
 class Book {
 private:
@@ -43,6 +43,7 @@ public:
 	friend bool operator<= (Book &cP1, Book &cP2);
 	friend bool operator== (Book &cP1, Book &cP2);
 	friend bool operator!= (Book &cP1, Book &cP2);
+	friend std::ostream& operator<< (std::ostream& cP1, Book &cP2);
 
 };
 

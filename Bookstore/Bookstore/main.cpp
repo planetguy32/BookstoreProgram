@@ -37,7 +37,7 @@ int main()
 			choice = -1;
 		}
 		
-		while ( choice > 4 || choice < 0){
+		while ( !(choice <=4 && choice >= 1)){
 
 			cout << "Invalid choice - only 1-4 are allowed" << endl;
 			getline(cin, strChoice);
