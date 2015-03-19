@@ -84,8 +84,8 @@ bool ModuleReport::doInteraction()
 	//REPORT MAIN MENU
 	std::cout << "Hello, welcome to the report module." << std::endl
 		<< "Choose your destiny:\n"
-		<< "1. Inventory List\n2.Inventory Wholesale Value\n3.Inventory Retail Value\n4.List All Books by Quantity\n"
-		<< "5.List All Books by Wholesale Cost\n6.List All Books by Age inInventory\n7.Exit\n"
+		<< "1. Inventory List\n2. Inventory Wholesale Value\n3. Inventory Retail Value\n4. List All Books by Quantity\n"
+		<< "5. List All Books by Wholesale Cost\n6. List All Books by Age inInventory\n7. Exit\n"
 		<< "ENTER CHOICE : "
 		<< setprecision(2) << fixed;
 		std::cin >> menuChoice;
@@ -111,7 +111,7 @@ bool ModuleReport::doInteraction()
 		listBy(&Book::getDate);
 		break;
 	case 7:
-		cout << endl << "\"See you later.\"";
+		cout << endl << "See you later."<<endl;
 		return 1;
 	}
 
