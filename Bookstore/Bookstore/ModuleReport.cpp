@@ -15,6 +15,7 @@ ModuleReport::~ModuleReport()
 {
 }
 
+//accumulates a sum of the values returned by f for all books
 template<class T>
 void ModuleReport::accumulate(T (Book::* f)())
 {
@@ -30,6 +31,7 @@ void ModuleReport::accumulate(T (Book::* f)())
 	std::cout << std::endl << "Total: " << sum << std::endl << std::endl;
 }
 
+//lists the books sorted by f, printing them out followed by f
 template<class T>
 void ModuleReport::listBy(T(Book::* f)())
 {
@@ -37,6 +39,7 @@ void ModuleReport::listBy(T(Book::* f)())
 	dumpBookList(f);
 }
 
+//bubblesort the books by the values returned by f for each book
 template<class T>
 void ModuleReport::sortBy(T(Book::* f)())
 {
@@ -44,8 +47,10 @@ void ModuleReport::sortBy(T(Book::* f)())
 	{
 		for (int i = wall + 1; i < inventory->books.size(); i++)
 		{
+			//compare
 			if ((inventory->books[i]->*f)() > (inventory->books[wall]->*f)())
 			{
+				//swap
 				Book * temp = inventory->books[i];
 				inventory->books[i] = inventory->books[wall];
 				inventory->books[wall] = temp;
@@ -54,6 +59,7 @@ void ModuleReport::sortBy(T(Book::* f)())
 	}
 }
 
+//prints out the books, appending to each book entry the value returned by f
 template<class T>
 void ModuleReport::dumpBookList(T(Book::* f)())
 {
@@ -62,6 +68,7 @@ void ModuleReport::dumpBookList(T(Book::* f)())
 	std::cout << std::endl;
 }
 
+//prints out the books
 void ModuleReport::dumpBookList()
 {
 	for (int i = 0; i < inventory->books.size(); i++)
@@ -69,7 +76,8 @@ void ModuleReport::dumpBookList()
 	std::cout << std::endl;
 }
 
-bool ModuleReport::doInteraction() // main calls doInteraction which calls the ModuleReport functions
+//callback from main
+bool ModuleReport::doInteraction()
 {
 	int menuChoice;
 	std::cout << "===Inventory Module===" << std::endl;
@@ -88,7 +96,7 @@ bool ModuleReport::doInteraction() // main calls doInteraction which calls the M
 		dumpBookList();
 		break;
 	case 2:
-		accumulate(&(Book::getWhole));
+		accumulate(&Book::getWhole);
 		break;
 	case 3:
 		accumulate(&Book::getRetail);

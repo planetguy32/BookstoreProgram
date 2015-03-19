@@ -1,5 +1,6 @@
 #include "ModuleCheckout.h"
 #include "ModuleInventory.h"
+#include "SystemPrograms.h"
 
 #include <iostream>
 #include <iomanip>
@@ -21,7 +22,7 @@ bool ModuleCheckout::doInteraction()
 	std::cout << std::setprecision(2) << std::fixed;
 	while(1)
 	{
-		std::cout << "Ready for business - enter employee username (or \"logout\" or \"quit\")" << std::endl;
+		std::cout << "Ready for business - enter employee username (or \"logout\" to go to main menu)" << std::endl;
 		std::string employeeID;
 		std::getline(std::cin,employeeID);
 		if(strcmp( employeeID.c_str(), "logout") == 0)
@@ -30,6 +31,7 @@ bool ModuleCheckout::doInteraction()
 		}
 		else
 		{
+			system_clear();
 			std::cout << "Welcome to the bookstore."  << std::endl;
 		}
 		bool moreItems = true;
@@ -38,7 +40,7 @@ bool ModuleCheckout::doInteraction()
 		{
 			std::string strBookISBN;
 			long long int bookISBN;
-			std::cout << "ISBN: ";
+			std::cout << "ISBN (or \"done\"): ";
 			std::getline(std::cin, strBookISBN);
 			try{
 				bookISBN = std::stoll(strBookISBN);
@@ -64,6 +66,8 @@ bool ModuleCheckout::doInteraction()
 				std::cout << "Total: " << orderPrice * 1.10 <<std::endl; 
 				std::cout << "Thank you for your business." << std::endl;
 				std::cout << "Your cashier was " << employeeID << std::endl;
+				system_pause(); 
+				system_clear();
 			}
 		}
 

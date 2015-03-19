@@ -8,19 +8,6 @@
 
 /*
 ModuelInventory Class
-
-Book Class (SUBCLASS?)
--declare variables: ISBN, title, author, publisher, addDate, qty, wholesale, retail
--constructor
--destructor
--set functions
--get functions
-Set Functions
--initialize variables to get data
-Get Functions
--ofstream open file
--pull from BookList file into appropriate variables
--ofstream close file
 */
 
 class ModuleInventory :
@@ -30,7 +17,8 @@ private:
 	std::string * split(std::istream& in, char splitChar);
 
 	template<class T>
-	Book * findBook(T, T(Book::* f)(), int start, int end);
+	//find book whose member function f returns T and which is between start and end.
+	Book * findBook(T searchTerm, T(Book::* f)(), int start, int end);
 	Book * parseBook(std::string * inputArrayOf8);
 public:
 	std::vector<Book *> books;
@@ -41,11 +29,15 @@ public:
 
 	Book * Action(Book *);
 
+	//find book whose member function f returns T
 	template<class T>
-	Book * getBook(T isbn, T(Book::* f)());
+	Book * getBook(T searchTerm, T(Book::* f)());
+
+	//find book with the given ISBN
 	Book * getBook(long long int isbn);
 
+	//find the position of the book whose member function f returns T
 	template<class T>
-	int getBookIndex(T isbn, T(Book::* f)(), int start, int end);
+	int getBookIndex(T searchTerm, T(Book::* f)(), int start, int end);
 
 };

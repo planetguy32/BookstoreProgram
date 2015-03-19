@@ -11,7 +11,7 @@ private:
 public:
 	ModuleCheckout(ModuleInventory *inv);
 	~ModuleCheckout();
-	bool doInteraction();
+	virtual bool doInteraction();
 };
 
 #endif

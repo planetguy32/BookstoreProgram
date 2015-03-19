@@ -17,6 +17,8 @@ private:
 public:
 	Book();
 	~Book();
+	
+	//setters
 	void setISBN(long long int i);
 	void setTitle(std::string t);
 	void setAuthor(std::string a);
@@ -26,6 +28,7 @@ public:
 	void setRetail(double r);
 	void setDate(std::string date);
 
+	//getters
 	long long int getISBN();
 	std::string getTitle();
 	std::string getAuthor();
@@ -37,6 +40,7 @@ public:
 
 	void print();
 
+	//operator overloads
 	friend bool operator> (Book &cP1, Book &cP2);
 	friend bool operator< (Book &cP1, Book &cP2);
 	friend bool operator>= (Book &cP1, Book &cP2);

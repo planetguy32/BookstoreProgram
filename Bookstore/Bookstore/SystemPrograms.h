@@ -1,15 +1,9 @@
 #ifndef SYSTEM_PROGRAMS_H
 #define SYSTEM_PROGRAMS_H
-//Currently uses DOS commands
-void system_clear()
-{
-	system("CLS");
-}
 
+//System calls
+void system_clear();
 
-void system_pause()
-{
-	system("PAUSE");
-}
+void system_pause();
 
 #endif

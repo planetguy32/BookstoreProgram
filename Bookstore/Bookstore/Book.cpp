@@ -12,6 +12,9 @@ Book::~Book()
 
 }
 
+
+//Lots of getters and setters
+
 void Book::setISBN(long long int i)
 {
 	ISBN = i;
@@ -92,6 +95,8 @@ std::string Book::getDate()
 	return date;
 }
 
+
+//Annotates and prints all of the book's data. Uses quite a bit of screen space
 void Book::print()
 {
 	std::cout << std::endl;
@@ -106,6 +111,7 @@ void Book::print()
 	std::cout << std::endl;
 }
 
+//Comparison operators work on ISBNs
 bool operator> (Book &b1, Book &b2)
 {
 	return b1.ISBN > b2.ISBN;

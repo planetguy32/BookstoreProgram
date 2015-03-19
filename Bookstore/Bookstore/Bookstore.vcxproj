@@ -82,6 +82,7 @@
     <ClCompile Include="ModuleCheckout.cpp" />
     <ClCompile Include="ModuleInventory.cpp" />
     <ClCompile Include="ModuleReport.cpp" />
+    <ClCompile Include="SystemPrograms.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Book.h" />
