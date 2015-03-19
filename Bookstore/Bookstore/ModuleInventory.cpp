@@ -186,7 +186,8 @@ bool ModuleInventory::doInteraction()
 		switch (choice)
 		{
 		case 1:
-			book = findBook(stoll(bookQuery), &Book::getISBN, 0, books.size());
+			bookISBN = stoll(bookQuery);
+			book = findBook(bookISBN, &Book::getISBN, 0, books.size());
 			break;
 		case 2:
 			book = findBook(bookQuery, &Book::getTitle, 0, books.size());
@@ -219,19 +220,19 @@ bool ModuleInventory::doInteraction()
 				Book * book = new Book;
 				NewBook[0] = bookISBN;
 				std::cout << std::endl << " Title : ";
-				std::cin >> NewBook[1];
+				std::getline( std::cin, NewBook[1]);
 				std::cout << std::endl << " Author : ";
-				std::cin >> NewBook[2];
+				std::getline(std::cin, NewBook[2]);
 				std::cout << std::endl << " Publisher : ";
-				std::cin >> NewBook[3];
+				std::getline(std::cin, NewBook[3]);
 				std::cout << std::endl << " Date Added to Inventory : ";
-				std::cin >> NewBook[4];
+				std::getline(std::cin, NewBook[4]);
 				std::cout << std::endl << " Quantity On Hand : ";
-				std::cin >> NewBook[5];
+				std::getline(std::cin, NewBook[5]);
 				std::cout << std::endl << " Wholesale Cost : $";
-				std::cin >> NewBook[6];
+				std::getline(std::cin, NewBook[6]);
 				std::cout << std::endl << " Retail Price : $";
-				std::cin >> NewBook[7];
+				std::getline(std::cin, NewBook[7]);
 				std::cout << std::endl;
 
 				book = parseBook(NewBook);
