@@ -1,3 +1,63 @@
+/* *******************************************PSEUDO-CODE**************************************************
+MAIN MENU
+	- declare int menuChoice
+	- welcome statement
+	- display menu :
+		-list all books
+		- show wholesale value
+		- show retail value
+		- sort by quantity
+		- sort by wholesale cost
+		- sort by age
+		- exit
+	- prompt user input
+	- switch
+		-cases 1 - 6: call functions
+		-case 7: return false;
+
+LIST ALL BOOKS
+	- call ModuleInventory's print function
+
+WHOLESALE VALUE
+	- declare / initialize sum to 0
+	- loop through vector
+		- display each object's wholesale value
+		- add each object's wholesale value to sum
+	- display sum
+
+RETAIL VALUE
+	- declare / initialize sum to 0
+	- loop through vector
+		- display each object's retail value
+		- add each object's retail value to sum
+	- display sum
+
+SORT BY QUANTITY
+	- declare temp
+	- bubble loop : initialize wall, initialize index
+		- comparison : if qty of[wall] <[index]
+			- swap qty of[wall] for[index]
+	- loop through sorted vector
+		- display title and qty of each object
+
+SORT BY COST
+	- declare temp
+	- bubble loop : initialize wall, initialize index
+		- comparison : if cost of[wall] <[index]
+			- swap cost of[wall] for[index]
+	- loop through sorted vector
+		- display title and cost of each object
+
+SORT BY AGE
+	- declare temp
+	- bubble loop : initialize wall, initialize index
+		- comparison : if date of[wall] <[index]
+			- swap date of[wall] for[index]
+	- loop through sorted vector
+		- display title and date of each object
+*/
+
+#define _CRT_SECURE_NO_WARNINGS
 #include "ModuleReport.h"
 #include "ModuleInventory.h"
 #include <iostream>
@@ -5,11 +65,13 @@
 
 using namespace std;
 
+//CONSTRUCTOR
 ModuleReport::ModuleReport(ModuleInventory *inv)
 {
-	inventory = inv;
+	inventory = inv; //to use ModuleInventory's function members
 }
 
+//DECONSTRUCTOR
 ModuleReport::~ModuleReport()
 {
 }
@@ -19,7 +81,7 @@ void ModuleReport::listInv()
 {
 	for (int i = 0; i < inventory->books.size(); i++)
 	{
-		//inventory->books[i]->print();
+		inventory->books[i]->print();
 		std::cout << endl;
 	}
 }
@@ -56,7 +118,8 @@ void ModuleReport::retailValue()
 void ModuleReport::listByQty()
 {
 	{
-		Book * temp;
+		//Declare Variables
+		Book * temp; //to store greater qty for the swap
 
 		//SORT THE VECTOR
 		for (int wall = 0; wall < inventory->books.size() - 1; wall++)
@@ -85,7 +148,8 @@ void ModuleReport::listByQty()
 //*****************SORT BY WHOLESALE COST*****************
 void ModuleReport::listByCost()
 {
-	Book * temp;
+	//Declare Variables
+	Book * temp; //to store great value for the swap
 
 	//SORT THE VECTOR
 	for (int wall = 0; wall < inventory->books.size() - 1; wall++)
@@ -115,7 +179,8 @@ void ModuleReport::listByCost()
 void ModuleReport::listByAge()
 {
 	{
-		Book * temp;
+		//Declare Variables
+		Book * temp; //to store oldest date for the swap
 
 		//SORT THE VECTOR
 		for (int wall = 0; wall < inventory->books.size() - 1; wall++)
@@ -179,7 +244,7 @@ bool ModuleReport::doInteraction() // main calls doInteraction which calls the M
 		break;
 	case 7:
 		cout << endl << "\"See you later.\"";
-		return 1;
+		return false;
 	}
 
 	return false;
