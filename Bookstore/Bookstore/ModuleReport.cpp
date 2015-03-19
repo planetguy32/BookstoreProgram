@@ -27,14 +27,14 @@ void ModuleReport::accumulate(T (Book::* f)())
 		sum += subtotal;
 	}
 
-	std::cout << std::endl << "TOTAL WHOLESALE VALUE: " << sum << std::endl << std::endl;
+	std::cout << std::endl << "Total: " << sum << std::endl << std::endl;
 }
 
 template<class T>
 void ModuleReport::listBy(T(Book::* f)())
 {
 	sortBy(f);
-	dumpBookList();
+	dumpBookList(f);
 }
 
 template<class T>

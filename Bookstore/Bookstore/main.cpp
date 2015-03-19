@@ -3,6 +3,8 @@
 #include "ModuleCheckout.h"
 #include "ModuleInventory.h"
 #include "ModuleReport.h"
+#include "SystemPrograms.h"
+
 
 using namespace std;
 
@@ -18,7 +20,7 @@ int main()
 	bool go = true;
 
 	while (go){
-		cout << "Bookstore program" << endl;
+		cout << "===Main Menu===" << endl;
 		cout << "Select a mode:" << endl;
 		cout << "    1. Checkout" << endl;
 		cout << "    2. Inventory" << endl;
@@ -52,14 +54,21 @@ int main()
 		if (choice == 4)
 			go = false;
 		else
+		{
+			system_clear();
 			modules[choice-1]->doInteraction();
+			system_pause();
+			system_clear();
+		}
 	}
-	cout << "Exiting" << endl;
+	cout << "Saving" << endl;
 	delete modules[0];
 	modules[0] = 0;
+	cout << "Cleaning up" << endl;
 	delete modules[1];
 	modules[1] = 0;
 	delete modules[2];
 	modules[2] = 0;
-
+	cout << "Done" << endl;
+	
 }

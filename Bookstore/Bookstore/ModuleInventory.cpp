@@ -77,16 +77,26 @@ Book * ModuleInventory::parseBook(std::string * subParts)
 	Book * book = 0;
 	if (subParts)
 	{
-		book = new Book;
+		try
+		{
+			book = new Book;
 
-		book->setISBN(stoll(subParts[0]));
-		book->setTitle(subParts[1]);
-		book->setAuthor(subParts[2]);
-		book->setPub(subParts[3]);
-		book->setDate(subParts[4]);
-		book->setQty(stoi(subParts[5]));
-		book->setWhole(stod(subParts[6]));
-		book->setRetail(stod(subParts[7]));
+			book->setISBN(stoll(subParts[0]));
+			book->setTitle(subParts[1]);
+			book->setAuthor(subParts[2]);
+			book->setPub(subParts[3]);
+			book->setDate(subParts[4]);
+			book->setQty(stoi(subParts[5]));
+			book->setWhole(stod(subParts[6]));
+			book->setRetail(stod(subParts[7]));
+		}
+		catch (std::invalid_argument a)
+		{
+			for (int i = 0; i < 8; i++)
+				std::cout << subParts[i]<< " ";
+			std::cout << std::endl;
+
+		}
 	}
 	return book;
 }
@@ -218,9 +228,10 @@ bool ModuleInventory::doInteraction()
 			{
 				std::string * NewBook = new std::string[8];
 				Book * book = new Book;
-				NewBook[0] = bookISBN;
+				NewBook[0] = std::to_string(bookISBN);
+				std::cin.ignore();
 				std::cout << std::endl << " Title : ";
-				std::getline( std::cin, NewBook[1]);
+				std::getline(std::cin, NewBook[1]);
 				std::cout << std::endl << " Author : ";
 				std::getline(std::cin, NewBook[2]);
 				std::cout << std::endl << " Publisher : ";

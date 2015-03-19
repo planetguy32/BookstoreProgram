@@ -1,6 +1,5 @@
 #include "ModuleCheckout.h"
 #include "ModuleInventory.h"
-#include "SystemPrograms.h"
 
 #include <iostream>
 #include <iomanip>
@@ -24,7 +23,6 @@ bool ModuleCheckout::doInteraction()
 	{
 		std::cout << "Ready for business - enter employee username (or \"logout\" or \"quit\")" << std::endl;
 		std::string employeeID;
-		std::cin.ignore();
 		std::getline(std::cin,employeeID);
 		if(strcmp( employeeID.c_str(), "logout") == 0)
 		{
@@ -32,7 +30,6 @@ bool ModuleCheckout::doInteraction()
 		}
 		else
 		{
-			system_clear();
 			std::cout << "Welcome to the bookstore."  << std::endl;
 		}
 		bool moreItems = true;

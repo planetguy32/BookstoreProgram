@@ -136,6 +136,7 @@ bool operator!= (Book &b1, Book &b2)
 	return b1.ISBN != b2.ISBN;
 }
 
+//See also the print function. This goes on only one line but is not nearly as complete.
 std::ostream& operator<< (std::ostream& o, Book &b)
 {
 	o << std::setw(55) << b.getTitle() << " (" << b.getISBN() << ")";
